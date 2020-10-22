@@ -1,15 +1,15 @@
 import React from 'react'
-import logo from './logo.svg'
-import './App.css'
 
-import { headerData } from './data'
+import { headerData, aboutData } from './data'
 
 import Header from './components/Header'
+import About from './components/About'
 
 function App() {
 	return (
 		<div className="App">
 			<Header {...headerData} />
+			<About {...aboutData} />
 		</div>
 	)
 }
