@@ -30,7 +30,11 @@ export default function Project({ data = {} }) {
 		<div className="columns portfolio-item">
 			<div className="item-wrap">
 				<button onClick={onShowDetails}>
-					<img alt="" src={url} />
+					<img
+						alt=""
+						src={url}
+						style={{ width: '100%', height: '100%' }}
+					/>
 					<div className="overlay">
 						<div className="portfolio-item-meta">
 							<h5>{name}</h5>
