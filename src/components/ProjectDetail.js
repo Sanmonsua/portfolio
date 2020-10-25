@@ -4,14 +4,20 @@ export default function ProjectDetail({ onClose, project }) {
 	var {
 		name,
 		summary,
+		languages = [],
+		libraries = [],
 		images: [
+			,
 			{
 				resolutions: {
-					thumbnail: { url },
+					desktop: { url },
 				},
 			},
 		],
+		githubUrl,
 	} = project
+
+	var tags = [...languages, libraries].join(', ')
 	return (
 		<div>
 			<div className="mfp-bg mfp-fade mfp-ready" />
@@ -19,49 +25,38 @@ export default function ProjectDetail({ onClose, project }) {
 				className="mfp-wrap mfp-auto-cursor mfp-fade mfp-ready"
 				tabIndex={-1}
 				style={{
-					height: '539px',
+					height: window.innerHeight,
+					position: 'absolute',
+					top: `${document.body.scrollHeight - window.innerHeight}px`,
 				}}
 			>
 				<div className="mfp-container mfp-s-ready mfp-inline-holder">
-					<div
-						className="mfp-content"
-						style={{ height: '100%', alignSelf: 'center' }}
-					>
-						<div className="popup-modal" style={{ height: '80%' }}>
-							<div
-								className="scale-with-grid"
-								alt=""
-								style={{
-									height: '50%',
-									backgroundImage: `url(${url})`,
-									backgroundSize: 'cover',
-									backgroundPosition: 'center',
-								}}
-							/>
-							<div style={{ height: '50%' }}>
-								<div
-									className="description-box"
-									style={{
-										overflowY: 'auto',
-										height: '100%',
-									}}
+					<div className="mfp-content">
+						<div className="popup-modal">
+							<img className="scale-with-grid" src={url} alt="" />
+
+							<div className="description-box">
+								<h3>{name}</h3>
+								<p>{summary}</p>
+								<span className="categories">
+									<i className="fa fa-tag" />
+									{tags}
+								</span>
+							</div>
+							<div className="link-box">
+								<a
+									href={githubUrl}
+									target="_blank"
+									rel="noopener noreferrer"
 								>
-									<h3>{name}</h3>
-									<p>{summary}</p>
-									<span className="categories">
-										<i className="fa fa-tag" />
-										Branding, Webdesign
-									</span>
-								</div>
-								<div className="link-box">
-									<a href="http://www.behance.net">Details</a>
-									<button
-										onClick={onClose}
-										className="popup-modal-dismiss"
-									>
-										Close
-									</button>
-								</div>
+									Details
+								</a>
+								<button
+									onClick={onClose}
+									className="popup-modal-dismiss"
+								>
+									Close
+								</button>
 							</div>
 						</div>
 					</div>
