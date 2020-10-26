@@ -27,7 +27,7 @@ export default function ProjectDetail({ onClose, project }) {
 				style={{
 					height: window.innerHeight,
 					position: 'absolute',
-					top: `${document.body.scrollHeight - window.innerHeight}px`,
+					top: `${window.scrollY}px`,
 				}}
 			>
 				<div className="mfp-container mfp-s-ready mfp-inline-holder">
